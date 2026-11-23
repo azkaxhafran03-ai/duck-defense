@@ -1733,7 +1733,7 @@ const pwRule=v=>v.length<6?'Password must be at least 6 characters':v.length>30?
 async function authAccountCloud(name){
   const key=pKey(name),email=emailOf(name);
   let taken;
-  try{taken=(await CL.rdb.ref('names/'+key).once('value')).exists();}catch(e){toast('Cannot reach the server');return false;}
+  try{taken=(await CL.rdb.ref('names/'+key).once('value')).exists();}catch(e){if(/permission/i.test((e&&(e.code||e.message))||''))return 'fallback';toast('Cannot reach the server');return false;}
   if(taken){
     for(;;){
       const pw=await ask({title:'Enter Password',hint:'Password for '+name,password:true,max:30,validate:v=>v?null:'Enter your password'});
@@ -1771,7 +1771,7 @@ async function authAny(name){
   if(CL.on){
     const r=await authAccountCloud(name);
     if(r!=='fallback') return r;
-    CL.on=false;toast('Cloud accounts are not enabled yet. Using this device only');
+    CL.on=false;toast('Cloud accounts are not set up yet (check Firebase rules). Using this device only');
     try{await CL.auth.signInAnonymously();}catch(e){}
   }
   return authAccount(name);
