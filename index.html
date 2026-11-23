@@ -123,14 +123,14 @@ button{font-family:inherit;border:0;background:none;cursor:pointer;color:inherit
 #s-stage{background:radial-gradient(ellipse at 50% 45%,#f1e6c8,#d8c79b 70%,#bfa974)}
 #s-stage::before,#s-stage::after{content:"";position:absolute;top:0;bottom:0;width:18px;background:linear-gradient(90deg,#4f2412,#8a4527 50%,#4f2412);z-index:5}
 #s-stage::before{left:0}#s-stage::after{right:0}
-.mapsvg{position:absolute;inset:0;width:100%;height:100%}
+#world{position:absolute;left:0;top:0;width:1700px;height:1000px;z-index:1;transition:transform .8s cubic-bezier(.45,0,.2,1)}#wsvg{position:absolute;left:0;top:0}#nodes{position:absolute;inset:0}
 .s-top{position:absolute;left:0;right:0;top:0;height:46px;background:linear-gradient(#7a3b1d,#5a2a14);border-bottom:4px solid #2e1408;z-index:6}
 .s-ttl{position:absolute;left:34px;top:2px;z-index:7;font-size:32px}
 .snode{position:absolute;width:0;height:0;z-index:4;cursor:pointer}
-.snode .lbl{position:absolute;left:-60px;width:120px;bottom:var(--lb,26px);background:#fff;border:3px solid #333;padding:2px 6px;font-size:15px;line-height:1.05;text-align:center;color:#f7b500;-webkit-text-stroke:4px #111;paint-order:stroke fill;transition:bottom .12s}
-.snode.sel .lbl{box-shadow:0 0 0 4px #ff9d00}
+.snode .lbl{position:absolute;left:-60px;width:120px;bottom:var(--lb,26px);background:#f6ecd0;border:3px solid #3a2a14;padding:2px 6px;font-size:15px;line-height:1.05;text-align:center;color:#3a2a14;transition:bottom .12s}
+.snode.sel .lbl{box-shadow:0 0 0 3px #3a2a14;background:#fff7dc}
 .snode:not(.sel) .lbl{filter:brightness(.92)}
-.snode.locked{cursor:not-allowed}.snode.locked .lbl{filter:grayscale(1) brightness(.75)}
+.snode.locked{cursor:not-allowed}.snode.locked .lbl{opacity:.7}
 .snode .mk{position:absolute;left:-40px;bottom:-9px;width:80px;display:flex;align-items:flex-end;justify-content:center}
 .snode .dot{width:30px;height:30px;border-radius:50%;background:#ff9d00;border:4px solid #3a1d00;box-shadow:0 3px 0 rgba(0,0,0,.35)}
 .snode .dot.lock{background:#6b6b6b;border-color:#222;display:flex;align-items:center;justify-content:center}
@@ -461,26 +461,11 @@ input{user-select:text;-webkit-user-select:text}
 
   <!-- STAGE SELECT -->
   <section class="scene" id="s-stage">
-    <svg class="mapsvg" viewBox="0 0 960 540" preserveAspectRatio="none">
-      <rect width="960" height="540" fill="#86cdea"/>
-      <g fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="3" stroke-linecap="round">
-        <path d="M70 100q14-10 28 0t28 0M240 60q14-10 28 0t28 0M420 70q14-10 28 0t28 0M600 62q14-10 28 0t28 0M800 66q14-10 28 0t28 0M60 440q14-10 28 0t28 0M250 420q14-10 28 0t28 0M860 450q14-10 28 0t28 0M30 160q14-10 28 0t28 0M150 190q14-10 28 0t28 0"/>
-      </g>
-      <path d="M350 160Q372 112 470 114T700 104T898 124Q946 190 934 272T906 392Q820 424 700 414T470 418Q372 422 350 384Q326 300 350 160Z" fill="#f4e2a8" stroke="#8d7a47" stroke-width="4"/>
-      <path d="M350 160Q372 112 470 114T700 104T898 124Q946 190 934 272T906 392Q820 424 700 414T470 418Q372 422 350 384Q326 300 350 160Z" transform="translate(642 266) scale(.93) translate(-642 -266)" fill="#a9d96b"/>
-      <path d="M30 300Q28 236 96 232T172 292Q178 352 102 364T30 300Z" fill="#f4e2a8" stroke="#8d7a47" stroke-width="4"/>
-      <path d="M30 300Q28 236 96 232T172 292Q178 352 102 364T30 300Z" transform="translate(100 298) scale(.88) translate(-100 -298)" fill="#a9d96b"/>
-      <rect x="160" y="286" width="196" height="30" fill="#b98a52" stroke="#4a2b10" stroke-width="3"/>
-      <path d="M176 286v30M192 286v30M208 286v30M224 286v30M240 286v30M256 286v30M272 286v30M288 286v30M304 286v30M320 286v30M336 286v30M352 286v30" stroke="#6b4420" stroke-width="2"/>
-      <path d="M160 283H356M160 319H356" stroke="#4a2b10" stroke-width="5" stroke-linecap="round"/>
-      <g fill="#6b4420" stroke="#2e1408" stroke-width="2"><rect x="164" y="276" width="8" height="14"/><rect x="258" y="276" width="8" height="14"/><rect x="346" y="276" width="8" height="14"/><rect x="164" y="312" width="8" height="14"/><rect x="258" y="312" width="8" height="14"/><rect x="346" y="312" width="8" height="14"/></g>
-      <polyline points="95,300 245,300 415,345 545,345 668,345 790,345 790,215 668,215 545,215 415,215" fill="none" stroke="#7a6a3a" stroke-width="3" stroke-dasharray="8 8" opacity=".75"/>
-    </svg>
+    <div id="world"><svg id="wsvg" width="1700" height="1000" viewBox="0 0 1700 1000"></svg><div id="nodes"></div></div>
     <div class="s-top"></div>
     <div class="s-ttl ol dr" style="--d:.05s">Stage Select</div>
     <div class="pill dr" style="right:36px;top:6px;--d:.1s;height:32px"><small>XP</small><span class="num ol xpv" style="font-size:18px">0</span></div>
     <div class="pill dr" style="right:158px;top:6px;--d:.12s;height:32px"><svg class="ico" viewBox="0 0 24 24"><ellipse cx="12" cy="13" rx="9" ry="8" fill="#ffd36a" stroke="#111" stroke-width="2"/><path d="M7 12q5-5 10 0" fill="none" stroke="#c98a1a" stroke-width="2"/></svg><span class="num ol coinv" style="font-size:18px">0</span></div>
-    <div id="nodes"></div>
     <div class="s-info up" id="s-info" style="--d:.3s"></div>
     <div class="s-energy ol ol-s fr" style="--d:.3s"><span style="font-size:18px">Energy</span><b class="enrg" data-n="100">100</b></div>
     <button class="btn pink s-attack pop" id="s-attack" style="--d:.45s"><span class="t ol">Attack!</span></button>
@@ -962,32 +947,32 @@ const WORLD=1500,GROUND=432,K=0.8;           // K = sprite draw scale
 const HW=28;                                  // unit half-width (hitbox)
 const MONEY_MAX=200,TICK=0.1,TICK_GAIN=2;     // +2 every 0.1s, max 200
 const STAGES=[
-  {id:'kearo',name:'Kearo Field',x:95,y:300,baseHp:500,enemies:'Duck',reward:{xp:200,coins:10},
+  {id:'kearo',name:'Kearo Field',x:170,y:640,baseHp:500,enemies:'Duck',reward:{xp:200,coins:10},
     ai:{eager:1,cd:{duck:8},units:[['duck',1]]}},
-  {id:'bridge',name:'Kazu Bridge',x:245,y:300,baseHp:600,enemies:'Duck',reward:{xp:200,coins:15},
+  {id:'bridge',name:'Kazu Bridge',x:420,y:600,baseHp:600,enemies:'Duck',reward:{xp:200,coins:15},
     ai:{eager:1.1,cd:{duck:4.5},units:[['duck',1]]}},
-  {id:'city',name:'Kazu City',x:415,y:345,baseHp:1000,enemies:'Duck, Duck Sword',reward:{xp:400,coins:25,unit:'duck_sword'},
+  {id:'city',name:'Kazu City',x:650,y:720,baseHp:1000,enemies:'Duck, Duck Sword',reward:{xp:400,coins:25,unit:'duck_sword'},
     ai:{eager:1.15,cd:{duck:4,duck_sword:8},units:[['duck',.88],['duck_sword',.12]]}},
-  {id:'border',name:'Kazu and Mizo Borderland',x:545,y:345,baseHp:1500,enemies:'Duck, Duck Sword',reward:{xp:500,coins:40},
+  {id:'border',name:'Kazu and Mizo Borderland',x:860,y:570,baseHp:1500,enemies:'Duck, Duck Sword',reward:{xp:500,coins:40},
     ai:{eager:1.25,cd:{duck:3.5,duck_sword:6.5},units:[['duck',.7],['duck_sword',.3]]}},
-  {id:'outer',name:'Outer Mizo',x:668,y:345,baseHp:2000,enemies:'Duck, Duck Sword',reward:{xp:600,coins:60},
+  {id:'outer',name:'Outer Mizo',x:1030,y:770,baseHp:2000,enemies:'Duck, Duck Sword',reward:{xp:600,coins:60},
     ai:{eager:1.4,cd:{duck:3,duck_sword:5},units:[['duck',.58],['duck_sword',.42]]}},
-  {id:'central',name:'Mizo Central',x:790,y:345,baseHp:3000,enemies:'Duck Sword, Shield Duck',reward:{xp:890,coins:85,unit:'shield_duck'},
+  {id:'central',name:'Mizo Central',x:1250,y:660,baseHp:3000,enemies:'Duck Sword, Shield Duck',reward:{xp:890,coins:85,unit:'shield_duck'},
     ai:{eager:1.4,cd:{duck_sword:4.5,shield_duck:10},units:[['duck_sword',.8],['shield_duck',.2]]}},
-  {id:'colosseum',name:'Mizo Colosseum',x:790,y:215,baseHp:3500,enemies:'Duck, Duck Sword',reward:{xp:1000,coins:120},
+  {id:'colosseum',name:'Mizo Colosseum',x:1390,y:440,baseHp:3500,enemies:'Duck, Duck Sword',reward:{xp:1000,coins:120},
     ai:{sched:[
       {id:'duck',modes:[{w:40,iv:4},{w:30,iv:2},{w:30,iv:6,n:3}]},
       {id:'duck_sword',first:3,modes:[{w:70,iv:[4,5]},{w:30,iv:[4,5],n:2}]}]}},
-  {id:'jege',name:'Mizo and Jege Borderland',x:668,y:215,baseHp:4200,enemies:'Duck, Giant Duck',reward:{xp:1600,coins:150},
+  {id:'jege',name:'Mizo and Jege Borderland',x:1160,y:330,baseHp:4200,enemies:'Duck, Giant Duck',reward:{xp:1600,coins:150},
     ai:{sched:[
       {id:'giant_duck',first:.8,modes:[{iv:9999,n:1}]},
       {id:'duck',modes:[{w:72,iv:[2,5]},{w:28,iv:[2,5],n:3}]}]}},
-  {id:'idea',name:'Mountain of Idea',x:545,y:215,baseHp:5000,enemies:'Duck, Duck Sword, Shield Duck',reward:{xp:1900,coins:200},
+  {id:'idea',name:'Mountain of Idea',x:900,y:240,baseHp:5000,enemies:'Duck, Duck Sword, Shield Duck',reward:{xp:1900,coins:200},
     ai:{sched:[
       {id:'duck',modes:[{w:70,iv:[3,5]},{w:30,iv:[3,5],n:[2,3]}]},
       {id:'duck_sword',modes:[{iv:[3,4]}]},
       {id:'shield_duck',modes:[{iv:[4,6]}]}]}},
-  {id:'summit',name:'Mizo Summit',x:415,y:215,baseHp:6500,enemies:'Duck, Duck Sword, Shield Duck, Giant Duck',reward:{xp:2400,coins:250,unit:'egg_thrower'},
+  {id:'summit',name:'Mizo Summit',x:640,y:330,baseHp:6500,enemies:'Duck, Duck Sword, Shield Duck, Giant Duck',reward:{xp:2400,coins:250,unit:'egg_thrower'},
     ai:{sched:[
       {id:'duck',modes:[{iv:[4,5]}]},
       {id:'duck_sword',modes:[{iv:[4,5]}]},
@@ -1370,7 +1355,53 @@ $('#u-back').onclick=e=>press(e.currentTarget,el=>goto('lobby',el));
 $('#l-inv').onclick=e=>press(e.currentTarget,el=>goto('inv',el));
 $('#l-back').onclick=e=>press(e.currentTarget,el=>goto('title',el));
 $('#s-back').onclick=e=>press(e.currentTarget,el=>goto('lobby',el));
+const WW=1700,WH=1000;
+function smooth(pts,closed){
+  const n=pts.length,P=i=>pts[(i+n)%n];let d='M'+pts[0][0]+' '+pts[0][1];
+  const last=closed?n:n-1;
+  for(let i=0;i<last;i++){
+    const a=closed?P(i-1):pts[Math.max(i-1,0)],b=pts[i],c=closed?P(i+1):pts[i+1],e=closed?P(i+2):pts[Math.min(i+2,n-1)];
+    d+=`C${b[0]+(c[0]-a[0])/6} ${b[1]+(c[1]-a[1])/6} ${c[0]-(e[0]-b[0])/6} ${c[1]-(e[1]-b[1])/6} ${c[0]} ${c[1]}`;
+  }
+  return d+(closed?'Z':'');
+}
+let mapBuilt=false;
+function buildMap(){
+  if(mapBuilt)return;mapBuilt=true;
+  const main=[[540,640],[520,520],[560,400],[556,280],[640,190],[780,150],[940,126],[1100,176],[1260,146],[1420,220],[1520,340],[1566,480],[1500,620],[1534,760],[1420,862],[1260,836],[1120,904],[960,862],[820,884],[680,858],[590,790]];
+  const left=[[60,640],[82,540],[180,488],[290,528],[322,620],[300,712],[200,772],[100,742]];
+  const dM=smooth(main,true),dL=smooth(left,true);
+  const ink='#3a2a14';let g='';
+  g+=`<rect width="${WW}" height="${WH}" fill="#dccb9f"/>`;
+  g+='<g stroke="#8a7440" stroke-opacity=".22" stroke-width="1">';
+  for(let x=0;x<=WW;x+=100)g+=`<path d="M${x} 0V${WH}"/>`;
+  for(let y=0;y<=WH;y+=100)g+=`<path d="M0 ${y}H${WW}"/>`;
+  g+='</g>';
+  [[main,1.5,.5],[main,1.9,.3],[left,1.9,.5],[left,2.8,.3]].forEach(([p,k,o])=>{
+    const cx=p.reduce((a,q)=>a+q[0],0)/p.length,cy=p.reduce((a,q)=>a+q[1],0)/p.length;
+    const q=p.map(v=>[cx+(v[0]-cx)*(1+(k-1)*.12),cy+(v[1]-cy)*(1+(k-1)*.12)]);
+    g+=`<path d="${smooth(q,true)}" fill="none" stroke="${ink}" stroke-opacity="${o}" stroke-width="1.5" stroke-dasharray="${k>2?'2 7':'10 6'}"/>`;
+  });
+  g+=`<path d="${dM}" fill="#f4ead0" stroke="${ink}" stroke-width="4" stroke-linejoin="round"/>`;
+  g+=`<path d="${dL}" fill="#f4ead0" stroke="${ink}" stroke-width="4" stroke-linejoin="round"/>`;
+  // bridge
+  let pl='';for(let x=316;x<=532;x+=14)pl+=`M${x} 584v32`;
+  g+=`<rect x="300" y="584" width="244" height="32" fill="#f4ead0" stroke="none"/><path d="M300 584H544M300 616H544" stroke="${ink}" stroke-width="5"/><path d="${pl}" stroke="${ink}" stroke-width="2" stroke-opacity=".7"/>`;
+  g+=`<g fill="${ink}"><rect x="306" y="574" width="9" height="12"/><rect x="420" y="574" width="9" height="12"/><rect x="530" y="574" width="9" height="12"/><rect x="306" y="614" width="9" height="12"/><rect x="420" y="614" width="9" height="12"/><rect x="530" y="614" width="9" height="12"/></g>`;
+  // route
+  g+=`<path d="${smooth(STAGES.map(t=>[t.x,t.y]),false)}" fill="none" stroke="${ink}" stroke-width="4" stroke-dasharray="3 12" stroke-linecap="round" opacity=".8"/>`;
+  $('#wsvg').innerHTML=g;
+}
+function camTo(instant){
+  const w=$('#world'),st=STAGES.find(x=>x.id===selStage)||STAGES[0];
+  const tx=Math.max(960-WW,Math.min(0,480-st.x)),ty=Math.max(540-WH,Math.min(0,225-st.y));
+  if(instant){w.style.transition='none';}
+  w.style.transform=`translate(${tx}px,${ty}px)`;
+  if(instant){void w.offsetWidth;w.style.transition='';}
+}
+let camInit=false;
 function renderStage(){
+  buildMap();
   if(!stageUnlocked(selStage))selStage='kearo';
   const box=$('#nodes');box.innerHTML='';
   const chkSvg='<svg viewBox="0 0 12 12"><path d="M2 6.5l3 3 5-6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -1390,7 +1421,7 @@ function renderStage(){
   let chips=`<span class="chip">${R.xp} XP</span><span class="chip"><svg class="ico" viewBox="0 0 24 24" style="width:20px;height:20px"><ellipse cx="12" cy="13" rx="9" ry="8" fill="#ffd36a" stroke="#111" stroke-width="2"/><path d="M7 12q5-5 10 0" fill="none" stroke="#c98a1a" stroke-width="2"/></svg>${R.coins} Coins</span>`;
   if(R.unit){const u=U(R.unit),got=state.claimed[R.unit];chips+=`<span class="chip gold${got?' dimc':''}">${sprIcon(u.spr,34,26)}${u.name}${got?' (claimed)':' (first clear only)'}</span>`;}
   $('#s-info').innerHTML=`<div class="r1"><span class="ol ol-s">${st.name}</span><span><small>Stage ${STAGES.indexOf(st)+1}</small> &nbsp; <small>Base HP</small> ${st.baseHp}</span></div><div class="r1b">Enemies: ${st.enemies}</div><div class="r2"><small style="font-size:17px;color:#ffd27a">Reward</small>${chips}</div>`;
-  refreshXP();
+  refreshXP();camTo(!camInit);camInit=true;
 }
 $('#s-attack').onclick=e=>{
   if(!state.deck.some(Boolean)){locked(e.currentTarget,'Equip a unit in Inventory first!');return;}
