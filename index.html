@@ -395,6 +395,25 @@ input{user-select:text;-webkit-user-select:text}
 .roundbtn.trash{left:94px;background:radial-gradient(circle at 35% 30%,#d9e2ea,#8a9aa8 60%,#55646f)}
 .s-info .r1b{font-size:15px;color:#ffd27a;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #c-del{position:absolute;right:18px;bottom:18px;height:46px;padding:0 20px;z-index:7}#c-del .t{font-size:21px}
+.arw{position:absolute;top:210px;width:54px;height:76px;z-index:6;border-radius:14px;border:4px solid #1d0f06;background:linear-gradient(#ffb23a,#e07a00);box-shadow:0 4px 0 #6b3a00;padding:0;cursor:pointer}
+.arw.l{left:24px}.arw.r{right:24px}.arw svg{width:34px;height:34px;filter:drop-shadow(0 2px 0 #1d0f06)}.arw:active{transform:translateY(3px);box-shadow:0 1px 0 #6b3a00}
+.arw.off{filter:grayscale(1) brightness(.7)}
+.urow{height:82px;gap:12px}.uico{width:62px;height:62px}.uico svg{width:46px;height:46px}.unm{font-size:24px}.ulv{font-size:14px;margin-bottom:0}.ud{font-size:14px}.ubtn{height:54px;width:200px}.ubtn .t{font-size:20px}#upg-list{top:60px;gap:8px}
+#s-insp{background:repeating-linear-gradient(-45deg,#e6d3b0 0 14px,#dcc7a0 14px 28px)}
+#s-insp::before,#s-insp::after{content:"";position:absolute;top:0;bottom:0;width:18px;background:linear-gradient(90deg,#4f2412,#8a4527 50%,#4f2412);z-index:5}
+#s-insp::before{left:0}#s-insp::after{right:0}
+#in-art{left:44px;top:70px;width:270px;height:392px;display:flex;flex-direction:column;align-items:center;padding:14px 10px;gap:8px}
+#in-p{left:330px;top:70px;width:586px;height:392px;padding:12px 14px;overflow:hidden}
+.in-nm{font-size:32px;line-height:1}.in-lv{font-size:20px;color:#5a2f18}
+.in-art{width:100%;height:190px;border-radius:10px;border:3px solid #2a1c10;background:radial-gradient(circle at 50% 35%,#fff,#d9e6ee 70%,#b9c9d4);display:flex;align-items:center;justify-content:center}
+.in-idbox{margin-top:auto;width:100%;text-align:center;background:#3a2414;border:3px solid #1d0f06;border-radius:10px;padding:6px 4px;color:#ffd27a}
+.in-idbox small{display:block;font-size:14px;color:#e3b97c}.in-idbox b{font-size:28px;letter-spacing:2px;font-weight:400;color:#fff}
+.ir{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:5px 12px;background:#fff8e6;border-radius:8px;margin-bottom:5px;font-size:19px;color:#3a2210;min-height:36px}
+.ir b{font-weight:400;color:#7a3b1d;text-align:right}
+.ir.sub{background:#e9f5d9;font-size:16px;min-height:30px;margin-top:-2px}.ir.sub b{color:#2e8a10}
+.ir.sub.none{background:#f0e8d2}.ir.sub.none b{color:#8a7a5a}
+.insp-btn{position:absolute;right:6px;top:6px;width:36px;height:36px;padding:0;border-radius:50%;border:3px solid #1d0f06;background:linear-gradient(#7fd0ff,#2f8fd6);box-shadow:0 3px 0 #123f66;cursor:pointer;z-index:3}
+.insp-btn svg{width:22px;height:22px}.insp-btn:active{transform:translateY(2px)}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
@@ -466,6 +485,8 @@ input{user-select:text;-webkit-user-select:text}
     <div class="s-ttl ol dr" style="--d:.05s">Stage Select</div>
     <div class="pill dr" style="right:36px;top:6px;--d:.1s;height:32px"><small>XP</small><span class="num ol xpv" style="font-size:18px">0</span></div>
     <div class="pill dr" style="right:158px;top:6px;--d:.12s;height:32px"><svg class="ico" viewBox="0 0 24 24"><ellipse cx="12" cy="13" rx="9" ry="8" fill="#ffd36a" stroke="#111" stroke-width="2"/><path d="M7 12q5-5 10 0" fill="none" stroke="#c98a1a" stroke-width="2"/></svg><span class="num ol coinv" style="font-size:18px">0</span></div>
+    <button class="arw l pop" id="s-prev" style="--d:.4s"><svg viewBox="0 0 40 40"><path d="M26 6L10 20l16 14" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="arw r pop" id="s-next" style="--d:.4s"><svg viewBox="0 0 40 40"><path d="M14 6l16 14-16 14" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     <div class="s-info up" id="s-info" style="--d:.3s"></div>
     <div class="s-energy ol ol-s fr" style="--d:.3s"><span style="font-size:18px">Energy</span><b class="enrg" data-n="100">100</b></div>
     <button class="btn pink s-attack pop" id="s-attack" style="--d:.45s"><span class="t ol">Attack!</span></button>
@@ -516,6 +537,14 @@ input{user-select:text;-webkit-user-select:text}
     <div class="panel fl" id="m-left" style="--d:.15s"><h3 style="color:#fff">Your Unit</h3><div id="m-units"></div></div>
     <div class="panel fr" id="m-right" style="--d:.2s"><h3 style="color:#fff">Storage Room</h3><div id="m-body" style="display:flex;flex-direction:column;gap:8px;flex:1;min-height:0;padding-top:10px"></div></div>
     <button class="backbtn pop" id="m-back" style="--d:.5s"><svg viewBox="0 0 40 40"><path d="M16 8L5 18l11 10v-6c9 0 14 3 17 10 0-10-6-17-17-18z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"/></svg></button>
+  </section>
+
+  <!-- ADVANCED INSPECT -->
+  <section class="scene" id="s-insp">
+    <div class="i-title dr" style="--d:.05s"><div class="ribbon ol">Advanced Inspect</div></div>
+    <div class="panel up" id="in-art" style="--d:.15s"></div>
+    <div class="panel up" id="in-p" style="--d:.2s"></div>
+    <button class="backbtn pop" id="in-back" style="--d:.5s"><svg viewBox="0 0 40 40"><path d="M16 8L5 18l11 10v-6c9 0 14 3 17 10 0-10-6-17-17-18z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"/></svg></button>
   </section>
 
   <!-- STORAGE ROOM -->
@@ -667,20 +696,21 @@ const SND={on:true};
 try{SND.on=JSON.parse(localStorage.getItem(SKEY)||'{}').on!==false;}catch(e){}
 let profiles={};
 try{profiles=JSON.parse(localStorage.getItem(PKEY)||'{}')||{};}catch(e){}
-const newProfile=name=>({name,admin:false,xp:0,xpEarned:0,coins:0,owned:['duck'],cleared:{},swordClaimed:false,kills:0,spawned:0,lv:{duck:1,duck_sword:1,shield_duck:1},claimed:{},storage:{},up:{acc:1,base:1,repro:1},deck:['duck',null,null,null,null],sel:'duck'});
+const newProfile=name=>({name,admin:false,xp:0,xpEarned:0,coins:0,owned:['duck'],cleared:{},swordClaimed:false,kills:0,spawned:0,lv:{duck:1,duck_sword:1,shield_duck:1},claimed:{},storage:{},up:{acc:1,base:1,repro:1,wallet:1,speed:0},deck:['duck',null,null,null,null],sel:'duck'});
 let state=newProfile('');
 function login(name,admin){
   const key=name.toLowerCase(),old=profiles[key];
   const p=Object.assign(newProfile(name),old||{});
   p.name=old?old.name:name;p.admin=admin;
-  p.up=Object.assign({acc:1,base:1,repro:1},p.up);p.lv=Object.assign({duck:1,duck_sword:1,shield_duck:1},p.lv);
+  p.up=Object.assign({acc:1,base:1,repro:1,wallet:1,speed:0},p.up);p.lv=Object.assign({duck:1,duck_sword:1,shield_duck:1},p.lv);
   p.owned=Array.isArray(p.owned)?p.owned:['duck'];if(!p.owned.includes('duck'))p.owned.unshift('duck');
   p.coins=p.coins||0;p.storage=(p.storage&&typeof p.storage==='object')?p.storage:{};for(const k in p.storage)p.storage[k]=Math.max(0,Math.floor(Number(p.storage[k])||0));p.cleared=p.cleared||{};p.claimed=p.claimed||{};if(p.swordClaimed)p.claimed.duck_sword=true;
   STAGES.forEach((st,i)=>{if(p.cleared[st.id])for(let j=0;j<i;j++)p.cleared[STAGES[j].id]=true;});   // old saves: earlier stages count as cleared
   selStage=(STAGES.find(st=>!p.cleared[st.id])||STAGES[STAGES.length-1]).id;
   p.deck=(Array.isArray(p.deck)?p.deck:[]).map(id=>p.owned.includes(id)?id:null);while(p.deck.length<5)p.deck.push(null);
   if(!p.owned.includes(p.sel))p.sel='duck';
-  state=p;save();
+  ensureInst(p);
+  state=p;save();setTimeout(ensureIds,200);
 }
 const lvOf=id=>(state.lv&&state.lv[id])||1;
 const canPay=c=>state.admin||state.xp>=c;
@@ -697,8 +727,17 @@ const UPS={
     eff:l=>Math.pow(.95,l-1),
     txt:l=>`Spawn cooldown: ${(5*UPS.repro.eff(l)).toFixed(2)}s (-${Math.round((1-UPS.repro.eff(l))*100)}%)`}
 };
-const upCostU=(k,l)=>Math.round(UPS[k].base*Math.pow(UPS[k].mult,l-1));
+UPS.wallet={name:'Bigger Wallet',max:10,base:500,mult:1.3,
+    eff:l=>Math.round(200*(1+.2*(l-1))),
+    txt:l=>`Max money: ${UPS.wallet.eff(l)}¢ (+${(l-1)*20}%)`};
+const SPD=[0,.02,.03,.05,.07,.10];
+UPS.speed={name:'Faster Attack',max:5,base:100,mult:1.4,zero:true,
+    eff:l=>1-SPD[l],
+    txt:l=>l<=0?'Attack cooldown: normal':`Attack cooldown: -${Math.round(SPD[l]*100)}%`};
+const upCostU=(k,l)=>Math.round(UPS[k].base*Math.pow(UPS[k].mult,UPS[k].zero?l:l-1));
 const UPICON={
+  wallet:'<svg viewBox="0 0 60 60"><g stroke="#111" stroke-width="3.5" stroke-linejoin="round"><rect x="7" y="16" width="46" height="34" rx="6" fill="#b9753a"/><path d="M7 24h46" fill="none"/><rect x="36" y="30" width="17" height="12" rx="4" fill="#ffd23f"/></g><circle cx="43" cy="36" r="2.5" fill="#111"/></svg>',
+  speed:'<svg viewBox="0 0 60 60"><g stroke="#111" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"><path d="M34 6L14 34h14l-4 20 22-30H32z" fill="#ffd23f"/></g></svg>',
   acc:'<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" fill="#ffd23f" stroke="#111" stroke-width="3.5"/><circle cx="30" cy="30" r="16" fill="none" stroke="#c98a00" stroke-width="3"/><path d="M30 20v20M24 26q6-6 12 0M24 34q6 6 12 0" fill="none" stroke="#7a4d00" stroke-width="3.5" stroke-linecap="round"/></svg>',
   base:'<svg viewBox="0 0 60 60"><g stroke="#111" stroke-width="3.5" stroke-linejoin="round"><rect x="14" y="20" width="32" height="34" fill="#c9c9cf"/><path d="M10 20V8h8v5h6V8h12v5h6V8h8v12Z" fill="#b2b2ba"/><path d="M25 54V42q5-9 10 0v12Z" fill="#2a2a33"/></g></svg>',
   repro:'<svg viewBox="0 0 60 60"><path d="M30 6C44 6 52 26 52 38C52 49 42 56 30 56C18 56 8 49 8 38C8 26 16 6 30 6Z" fill="#fff6d6" stroke="#111" stroke-width="3.5"/><circle cx="30" cy="36" r="11" fill="#fff" stroke="#111" stroke-width="3"/><path d="M30 29v7l5 3" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"/></svg>'
@@ -776,6 +815,7 @@ function show(name){
   if(name==='gacha') renderGacha();
   if(name==='merge') renderMerge();
   if(name==='store') renderStore();
+  if(name==='insp'){ensureInst(state);renderInsp();ensureIds();}
   refreshXP();
 }
 async function goto(name,from){
@@ -880,6 +920,68 @@ function renderInv(){
   document.querySelectorAll('#s-inv .card').forEach(c=>c.onclick=()=>{ if(busy) return; blip(); state.sel=c.dataset.id; save(); renderInv(); });
   renderDetail();
 }
+const CATS={B:'Basic'};
+const catOf=u=>u.cat||'B';
+const SERKEY='duck_serial_v1';
+const idStr=n=>{const v=Math.floor(n/100000);let x=v,l='';for(let i=0;i<3;i++){l+=String.fromCharCode(65+x%26);x=Math.floor(x/26);}return String(n%100000).padStart(5,'0')+l;};
+const fullId=(u,n)=>n==null?null:idStr(n)+catOf(u);
+function ensureInst(p){
+  if(!p.iu||typeof p.iu!=='object')p.iu={};
+  UNITS.forEach(u=>{
+    if(!p.owned||!p.owned.includes(u.id))return;
+    let r=p.iu[u.id];
+    if(!r){r={sn:null,mg:0,xs:0,cp:[]};const L=(p.lv&&p.lv[u.id])||1;for(let l=1;l<Math.min(L,u.maxLv);l++)r.xs+=upCost(u,l);p.iu[u.id]=r;}   // old accounts: estimate XP already spent
+    if(!Array.isArray(r.cp))r.cp=[];
+    const k=(p.storage&&p.storage[u.id])||0;while(r.cp.length<k)r.cp.push(null);r.cp.length=k;
+  });
+}
+const inst=id=>{ensureInst(state);return state.iu[id]||(state.iu[id]={sn:null,mg:0,xs:0,cp:[]});};
+async function nextSerial(type){
+  if(typeof CL!=='undefined'&&CL.on){
+    const u=CL.auth.currentUser;if(!u)throw 0;
+    const r=await CL.rdb.ref('counters/'+type).transaction(c=>(typeof c==='number'?c:0)+1);
+    if(!r.committed)throw 0;return r.snapshot.val()-1;
+  }
+  let o={};try{o=JSON.parse(localStorage.getItem(SERKEY)||'{}')||{};}catch(e){}
+  const n=Math.floor(Number(o[type])||0);o[type]=n+1;try{localStorage.setItem(SERKEY,JSON.stringify(o));}catch(e){}
+  return n;
+}
+let idBusy=false,idRetry=0;
+async function ensureIds(){
+  if(idBusy||!state.name)return;
+  const S=state;idBusy=true;let pending=false;
+  try{
+    ensureInst(S);
+    for(const u of UNITS){
+      if(!S.owned.includes(u.id))continue;
+      const r=S.iu[u.id];
+      if(r.sn==null){const n=await nextSerial(u.id);if(state!==S)throw 0;r.sn=n;save();}
+      while(r.cp.indexOf(null)>=0){const n=await nextSerial(u.id);if(state!==S)throw 0;const j=r.cp.indexOf(null);if(j<0)break;r.cp[j]=n;save();}
+    }
+  }catch(e){pending=true;}
+  idBusy=false;
+  if(pending&&state===S&&idRetry++<6)setTimeout(ensureIds,20000);else if(!pending)idRetry=0;
+  if(document.querySelector('.scene.active')?.id==='s-insp')renderInsp();
+}
+function renderInsp(){
+  const u=U(state.sel);if(!u)return;
+  ensureInst(state);
+  const L=lvOf(u.id),r=inst(u.id),sp=state.up.speed||0,f=UPS.speed.eff(sp),cd=u.atkCd*f,dmg=dmgAt(u,L),id=fullId(u,r.sn);
+  $('#in-art').innerHTML=`<div class="in-nm ol">${u.name}</div><div class="in-lv">Lv. ${lvTxt(u,L)}</div>
+    <div class="in-art">${sprIcon(u.spr,190,120)}</div>
+    <div class="in-idbox"><small>Unique ID</small><b>${id||'Pending…'}</b></div>`;
+  const buff=sp>0?`<div class="ir sub"><span>Buff source</span><b>Faster Attack Lv. ${sp} (-${Math.round(SPD[sp]*100)}%) · Upgrade menu</b></div>`:`<div class="ir sub none"><span>Buff source</span><b>No buffs active</b></div>`;
+  $('#in-p').innerHTML=`
+    <div class="ir"><span>Unique ID</span><b>${id||'Pending… (connecting)'}</b></div>
+    <div class="ir"><span>Category</span><b>${catOf(u)} · ${CATS[catOf(u)]}</b></div>
+    <div class="ir"><span>Health</span><b>${u.hp}</b></div>
+    <div class="ir"><span>Damage per second</span><b>${(dmg/cd).toFixed(1)} <small>(${dmg} dmg / ${cd.toFixed(2)}s)</small></b></div>
+    <div class="ir"><span>Attack type</span><b>${u.aoe?'AOE':'Normal'}</b></div>
+    <div class="ir"><span>Attack cooldown</span><b>${cd.toFixed(2)}s${sp>0?` <small>(base ${u.atkCd.toFixed(2)}s)</small>`:''}</b></div>
+    ${buff}
+    <div class="ir"><span>XP used on this unit</span><b>${r.xs} XP</b></div>
+    <div class="ir"><span>Units merged into this</span><b>${r.mg}</b></div>`;
+}
 function renderDetail(){
   const u=U(state.sel),d=$('#detail');
   if(!u){d.innerHTML='';return;}
@@ -887,7 +989,7 @@ function renderDetail(){
   d.classList.toggle('maxed',max);
   d.innerHTML=`
     <div class="d-head"><span class="nm ol">${u.name}</span><span class="lvl">Lv. ${lvTxt(u,L)}${L>u.maxLv?' (MAX)':' / '+u.maxLv}</span></div>
-    <div class="d-art"><div class="big">${sprIcon(u.spr,150,86)}</div></div>
+    <div class="d-art"><button class="insp-btn" id="d-insp" title="Advanced Inspect"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="#fff" fill-opacity=".35" stroke="#fff" stroke-width="2.6"/><path d="M15 15l6 6" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg></button><div class="big">${sprIcon(u.spr,150,86)}</div></div>
     <div class="stats">
       <div><span>HP</span><b>${u.hp}</b></div>
       <div><span>Attack Power</span><b>${dmgAt(u,L)}${max?'':` <i>▸ ${dmgAt(u,L+1)}</i>`}</b></div>
@@ -901,11 +1003,12 @@ function renderDetail(){
       <button class="btn d-btn ${can?'pink':'dim'}" id="d-up"><span class="t ol">${max?'MAX LEVEL':'Upgrade · '+cost+' XP'}</span></button>
       <button class="btn d-btn ${eq?'red':'green'}" id="d-eq"><span class="t ol">${eq?'Remove':'Equip'}</span></button>
     </div>`;
+  $('#d-insp').onclick=e=>{if(busy)return;press(e.currentTarget,el=>goto('insp',el));};
   $('#d-up').onclick=()=>{
     if(busy) return;
     if(max){locked($('#d-up'),'Already at max level!');return;}
     if(!canPay(cost)){locked($('#d-up'),`Need ${cost-state.xp} more XP`);return;}
-    pay(cost);state.lv[u.id]=L+1;save();quack();toast(`Level Up!  Lv. ${L+1}`);renderInv();refreshXP();
+    pay(cost);inst(u.id).xs+=cost;state.lv[u.id]=L+1;save();quack();toast(`Level Up!  Lv. ${L+1}`);renderInv();refreshXP();
   };
   $('#d-eq').onclick=()=>{
     if(busy) return;
@@ -952,7 +1055,7 @@ const STAGES=[
   {id:'bridge',name:'Kazu Bridge',x:420,y:600,baseHp:600,enemies:'Duck',reward:{xp:200,coins:15},
     ai:{eager:1.1,cd:{duck:4.5},units:[['duck',1]]}},
   {id:'city',name:'Kazu City',x:650,y:720,baseHp:1000,enemies:'Duck, Duck Sword',reward:{xp:400,coins:25,unit:'duck_sword'},
-    ai:{eager:1.15,cd:{duck:4,duck_sword:8},units:[['duck',.88],['duck_sword',.12]]}},
+    ai:{eager:1.0,cd:{duck:6,duck_sword:11},units:[['duck',.9],['duck_sword',.1]]}},
   {id:'border',name:'Kazu and Mizo Borderland',x:860,y:570,baseHp:1500,enemies:'Duck, Duck Sword',reward:{xp:500,coins:40},
     ai:{eager:1.25,cd:{duck:3.5,duck_sword:6.5},units:[['duck',.7],['duck_sword',.3]]}},
   {id:'outer',name:'Outer Mizo',x:1030,y:770,baseHp:2000,enemies:'Duck, Duck Sword',reward:{xp:600,coins:60},
@@ -1003,7 +1106,7 @@ function startBattle(){
     stage:ST,
     running:true,units:[],parts:[],cam:0,t:0,intro:1.4,ended:false,endT:0,paused:false,resultShown:false,
     bases:[{x:72,hw:52,hp:UPS.base.eff(state.up.base),max:UPS.base.eff(state.up.base),hurt:0},{x:WORLD-72,hw:52,hp:ST.baseHp,max:ST.baseHp,hurt:0}],
-    me:Object.assign(newWallet(),UPS.acc.eff(state.up.acc)),foe:{money:0,acc:0,cds:Object.fromEntries(UNITS.map(u=>[u.id,0])),tick:TICK,gain:TICK_GAIN},reproF:UPS.repro.eff(state.up.repro),
+    me:Object.assign(newWallet(),UPS.acc.eff(state.up.acc),{cap:UPS.wallet.eff(state.up.wallet)}),atkF:UPS.speed.eff(state.up.speed),foe:{money:0,acc:0,cds:Object.fromEntries(UNITS.map(u=>[u.id,0])),tick:TICK,gain:TICK_GAIN},reproF:UPS.repro.eff(state.up.repro),
     ai:{timer:1.2,mood:1,moodT:6,runs:[],q:[]},clouds:[],hintT:0
   });
   if(ST.ai.sched)ST.ai.sched.forEach(c=>B.ai.runs.push({c,t:c.first!=null?c.first:rv(c.modes[0].iv)*.6}));
@@ -1130,7 +1233,7 @@ function updUnit(u,dt){
   if(u.state==='cool'){u.moving=false;if(u.cd>0)return;u.state='walk';}
   if(tg){
     u.moving=false;
-    if(u.cd<=0){u.state='atk';u.t=0;u.hit=false;u.cd=def.atkCd;u.tgt=tg;}
+    if(u.cd<=0){u.state='atk';u.t=0;u.hit=false;u.cd=def.atkCd*(u.side===0?B.atkF:1);u.tgt=tg;}
     return;
   }
   u.moving=true;u.x+=dir*def.speed*dt;u.anim+=dt;
@@ -1185,7 +1288,7 @@ function endBattle(win){
 function update(dt){
   B.t+=dt;
   for(const w of [B.me,B.foe]){
-    w.acc+=dt;while(w.acc>=w.tick){w.acc-=w.tick;w.money=Math.min(MONEY_MAX,w.money+w.gain);}
+    w.acc+=dt;while(w.acc>=w.tick){w.acc-=w.tick;w.money=Math.min(w.cap||MONEY_MAX,w.money+w.gain);}
   }
   B.me.cds=B.me.cds.map(c=>Math.max(0,c-dt));for(const k in B.foe.cds)B.foe.cds[k]=Math.max(0,B.foe.cds[k]-dt);
   if(B.stage.ai.sched)aiSched(dt);
@@ -1223,7 +1326,7 @@ function showResult(){
     if(R.unit){
       const u=U(R.unit);
       if(!state.claimed[R.unit]){
-        state.claimed[R.unit]=true;if(R.unit==='duck_sword')state.swordClaimed=true;if(!state.owned.includes(R.unit))state.owned.push(R.unit);
+        state.claimed[R.unit]=true;if(R.unit==='duck_sword')state.swordClaimed=true;if(!state.owned.includes(R.unit))state.owned.push(R.unit);ensureInst(state);setTimeout(ensureIds,50);
         unit=`<div class="newunit">${sprIcon(u.spr,70,50)}<span class="ol">NEW UNIT: ${u.name}!</span></div>`;
       }else lines+=`<div style="font-size:22px;opacity:.85">${u.name} reward can only be claimed once</div>`;
     }
@@ -1236,7 +1339,7 @@ function showResult(){
 
 /* ---- HUD ---- */
 function hud(){
-  $('#bt-money').textContent=Math.floor(B.me.money)+'/'+MONEY_MAX+'¢';
+  $('#bt-money').textContent=Math.floor(B.me.money)+'/'+B.me.cap+'¢';
   const slots=$('#bt-deck').children;
   state.deck.forEach((id,i)=>{
     if(!id) return;const u=U(id),el=slots[i];
@@ -1344,6 +1447,7 @@ $('#g-back').onclick=e=>{if(hatching)return;press(e.currentTarget,el=>goto('lobb
 $('#i-merge').onclick=e=>press(e.currentTarget,el=>{mg.id=state.sel;mg.sel.clear();goto('merge',el);});
 $('#i-store').onclick=e=>press(e.currentTarget,el=>goto('store',el));
 $('#m-back').onclick=e=>press(e.currentTarget,el=>goto('inv',el));
+$('#in-back').onclick=e=>press(e.currentTarget,el=>goto('inv',el));
 $('#st-back').onclick=e=>press(e.currentTarget,el=>goto('inv',el));
 $('#g-hatch').onclick=()=>hatchEgg();
 $('#l-lb').onclick=e=>press(e.currentTarget,el=>goto('lb',el));
@@ -1400,6 +1504,15 @@ function camTo(instant){
   if(instant){void w.offsetWidth;w.style.transition='';}
 }
 let camInit=false;
+function stepStage(d){
+  if(busy)return;
+  const i=STAGES.findIndex(x=>x.id===selStage),j=i+d;
+  if(j<0||j>=STAGES.length)return;
+  if(!stageUnlocked(STAGES[j].id)){toast('Clear '+STAGES[i].name+' first');return;}
+  blip();selStage=STAGES[j].id;renderStage();
+}
+document.addEventListener('DOMContentLoaded',()=>{});
+$('#s-prev').onclick=()=>stepStage(-1);$('#s-next').onclick=()=>stepStage(1);
 function renderStage(){
   buildMap();
   if(!stageUnlocked(selStage))selStage='kearo';
@@ -1421,6 +1534,8 @@ function renderStage(){
   let chips=`<span class="chip">${R.xp} XP</span><span class="chip"><svg class="ico" viewBox="0 0 24 24" style="width:20px;height:20px"><ellipse cx="12" cy="13" rx="9" ry="8" fill="#ffd36a" stroke="#111" stroke-width="2"/><path d="M7 12q5-5 10 0" fill="none" stroke="#c98a1a" stroke-width="2"/></svg>${R.coins} Coins</span>`;
   if(R.unit){const u=U(R.unit),got=state.claimed[R.unit];chips+=`<span class="chip gold${got?' dimc':''}">${sprIcon(u.spr,34,26)}${u.name}${got?' (claimed)':' (first clear only)'}</span>`;}
   $('#s-info').innerHTML=`<div class="r1"><span class="ol ol-s">${st.name}</span><span><small>Stage ${STAGES.indexOf(st)+1}</small> &nbsp; <small>Base HP</small> ${st.baseHp}</span></div><div class="r1b">Enemies: ${st.enemies}</div><div class="r2"><small style="font-size:17px;color:#ffd27a">Reward</small>${chips}</div>`;
+  const ci=STAGES.indexOf(st);
+  $('#s-prev').classList.toggle('off',ci<=0);$('#s-next').classList.toggle('off',ci>=STAGES.length-1||!stageUnlocked(STAGES[Math.min(ci+1,STAGES.length-1)].id));
   refreshXP();camTo(!camInit);camInit=true;
 }
 $('#s-attack').onclick=e=>{
@@ -1512,6 +1627,7 @@ async function hatchEgg(){
   const id=rollEgg(),u=U(id);let isNew=false,n=0;
   if(state.owned.includes(id)){state.storage[id]=(state.storage[id]||0)+1;n=state.storage[id];}
   else{state.owned.push(id);isNew=true;}
+  ensureInst(state);setTimeout(ensureIds,50);
   save();refreshXP();quack();
   const egg=$('#g-egg'),fl=$('#g-flash');
   egg.classList.add('wobble');await sleep(1050);egg.classList.remove('wobble');
@@ -1549,7 +1665,7 @@ function renderMerge(){
   $('#m-do').onclick=()=>{
     if(busy)return;
     if(!mg.sel.size){locked($('#m-do'),'Select spare units first');return;}
-    const n=mg.sel.size;state.lv[u.id]=lvOf(u.id)+n;state.storage[u.id]=Math.max(0,k-n);mg.sel.clear();
+    const n=mg.sel.size;{const r=inst(u.id);r.cp=r.cp.filter((_,i)=>!mg.sel.has(i));r.mg+=n;}state.lv[u.id]=lvOf(u.id)+n;state.storage[u.id]=Math.max(0,k-n);mg.sel.clear();
     save();quack();toast(`${u.name} is now Lv. ${lvTxt(u,state.lv[u.id])}!`);renderMerge();
   };
 }
@@ -1577,12 +1693,16 @@ function sanitizeProfile(o){
   if(typeof o.pw==='string'&&/^\d{1,20}$/.test(o.pw))p.pw=o.pw;
   p.owned=(Array.isArray(o.owned)?o.owned:['duck']).filter(id=>ids.includes(id));if(!p.owned.includes('duck'))p.owned.unshift('duck');
   UNITS.forEach(u=>{p.lv[u.id]=clamp(o.lv&&o.lv[u.id],1,999);p.storage[u.id]=o.storage?clamp(o.storage[u.id]||0,0,9999):0;});
-  p.up={acc:clamp(o.up&&o.up.acc,1,5),base:clamp(o.up&&o.up.base,1,10),repro:clamp(o.up&&o.up.repro,1,10)};
+  p.up={acc:clamp(o.up&&o.up.acc,1,5),base:clamp(o.up&&o.up.base,1,10),repro:clamp(o.up&&o.up.repro,1,10),wallet:clamp(o.up&&o.up.wallet,1,10),speed:Math.max(0,Math.min(5,Math.floor(Number(o.up&&o.up.speed)||0)))};
   STAGES.forEach(st=>{if(o.cleared&&o.cleared[st.id])p.cleared[st.id]=true;});
   ids.forEach(id=>{if(o.claimed&&o.claimed[id])p.claimed[id]=true;});
   p.swordClaimed=!!p.claimed.duck_sword;
   p.deck=(Array.isArray(o.deck)?o.deck:[]).slice(0,5).map(id=>p.owned.includes(id)?id:null);while(p.deck.length<5)p.deck.push(null);
   p.sel=p.owned.includes(o.sel)?o.sel:'duck';
+  p.iu={};
+  if(o.iu&&typeof o.iu==='object')ids.forEach(id=>{const r=o.iu[id];if(!r||typeof r!=='object')return;const n2=v=>Number.isInteger(v)&&v>=0&&v<1e9?v:null;
+    p.iu[id]={sn:n2(r.sn),mg:clamp(r.mg,0,9999),xs:clamp(r.xs,0,1e9),cp:(Array.isArray(r.cp)?r.cp:[]).slice(0,9999).map(n2)};});
+  ensureInst(p);
   return p;
 }
 function sanitizeImport(raw){
