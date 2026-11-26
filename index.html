@@ -429,6 +429,33 @@ input{user-select:text;-webkit-user-select:text}
 .sl-cur{display:flex;gap:8px}.sl-cur .btn{flex:1;height:44px;padding:0}.sl-cur .btn .t{font-size:22px}
 #sl-price{width:100%;box-sizing:border-box;height:46px;font:inherit;font-size:26px;text-align:center;border:4px solid #5a2f18;border-radius:10px;background:#fffdf5;color:#3b1f0e;outline:none}
 #sl-go{height:54px;margin-top:auto}#sl-go .t{font-size:26px}
+
+#i-trait{height:46px;padding:0 20px}#i-trait .t{font-size:24px}
+.medals{position:absolute;left:6px;bottom:5px;display:flex;gap:4px;z-index:3}
+.medal{width:22px;height:22px;border-radius:50%;border:2px dashed #6b7a88;background:rgba(40,50,60,.35);display:flex;align-items:center;justify-content:center;font-size:12px;color:transparent;line-height:1}
+.medal.on{border:2px solid #111;color:#fff;-webkit-text-stroke:2.5px #111;paint-order:stroke fill;box-shadow:inset 0 2px 0 rgba(255,255,255,.55)}
+.medal.d.on{background:radial-gradient(circle at 35% 30%,#ff9a8a,#e53935 60%,#a01010)}
+.medal.s.on{background:radial-gradient(circle at 35% 30%,#fff08a,#ffc400 60%,#d08a00)}
+.medal.r.on{background:radial-gradient(circle at 35% 30%,#9fd8ff,#2f8fe0 60%,#1550a0)}
+#s-trait{background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.3),transparent 70%),repeating-linear-gradient(45deg,#d9c6f0 0 14px,#d0bbea 14px 28px)}
+#s-trait::before,#s-trait::after{content:"";position:absolute;top:0;bottom:0;width:18px;background:linear-gradient(90deg,#4f2412,#8a4527 50%,#4f2412);z-index:5}
+#s-trait::before{left:0}#s-trait::after{right:0}
+#tr-l{left:50px;top:76px;width:330px;height:392px;padding:12px}
+#tr-grid{display:grid;grid-template-columns:repeat(3,88px);gap:10px;justify-content:center;overflow-y:auto;max-height:330px;padding:6px 2px}
+#tr-grid .card{width:88px;height:88px}
+#tr-r{left:400px;top:76px;width:510px;height:392px;padding:10px 14px;display:flex;flex-direction:column;gap:7px}
+.tr-head{display:flex;align-items:center;gap:12px}
+.tr-head .a{width:96px;height:76px;background:linear-gradient(#bfe6ff,#e9f6ff);border:3px solid #5a2f18;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.tr-head b{font-size:30px;color:#3b1f0e}.tr-head small{display:block;font-size:17px;color:#7a5a3a}
+.tr-row{display:flex;align-items:center;gap:10px;background:#fff6dc;border:3px solid #8a5a2b;border-radius:12px;padding:5px 10px;min-height:56px}
+.tr-row.flash{animation:trflash .9s ease-out}
+@keyframes trflash{0%{background:#fff08a;transform:scale(1.03)}100%{background:#fff6dc;transform:none}}
+.tr-row .medal{width:34px;height:34px;font-size:18px;flex:none}
+.tr-row .lab{font-size:14px;color:#7a5a3a;line-height:1}
+.tr-row b{display:block;font-size:22px;color:#3b1f0e;line-height:1.05}
+.tr-row .ef{font-size:15px;color:#2f7a1a;line-height:1.05}
+.tr-row.empty b{color:#a89578}
+#tr-roll{height:56px;margin-top:auto}#tr-roll .t{font-size:28px}
 .roundbtn.trash{left:94px;background:radial-gradient(circle at 35% 30%,#d9e2ea,#8a9aa8 60%,#55646f)}
 .s-info .r1b{font-size:15px;color:#ffd27a;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #c-del{position:absolute;right:18px;bottom:18px;height:46px;padding:0 20px;z-index:7}#c-del .t{font-size:21px}
@@ -440,14 +467,14 @@ input{user-select:text;-webkit-user-select:text}
 #s-insp::before,#s-insp::after{content:"";position:absolute;top:0;bottom:0;width:18px;background:linear-gradient(90deg,#4f2412,#8a4527 50%,#4f2412);z-index:5}
 #s-insp::before{left:0}#s-insp::after{right:0}
 #in-art{left:44px;top:70px;width:270px;height:392px;display:flex;flex-direction:column;align-items:center;padding:14px 10px;gap:8px}
-#in-p{left:330px;top:70px;width:586px;height:392px;padding:12px 14px;overflow:hidden}
+#in-p{left:330px;top:70px;width:586px;height:400px;padding:10px 14px;overflow-y:auto}
 .in-nm{font-size:32px;line-height:1}.in-lv{font-size:20px;color:#5a2f18}
 .in-art{width:100%;height:190px;border-radius:10px;border:3px solid #2a1c10;background:radial-gradient(circle at 50% 35%,#fff,#d9e6ee 70%,#b9c9d4);display:flex;align-items:center;justify-content:center}
 .in-idbox{margin-top:auto;width:100%;text-align:center;background:#3a2414;border:3px solid #1d0f06;border-radius:10px;padding:6px 4px;color:#ffd27a}
 .in-idbox small{display:block;font-size:14px;color:#e3b97c}.in-idbox b{font-size:28px;letter-spacing:2px;font-weight:400;color:#fff}
-.ir{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:5px 12px;background:#fff8e6;border-radius:8px;margin-bottom:5px;font-size:19px;color:#3a2210;min-height:36px}
+.ir{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:2px 12px;background:#fff8e6;border-radius:8px;margin-bottom:3px;font-size:17px;color:#3a2210;min-height:28px}
 .ir b{font-weight:400;color:#7a3b1d;text-align:right}
-.ir.sub{background:#e9f5d9;font-size:16px;min-height:30px;margin-top:-2px}.ir.sub b{color:#2e8a10}
+.ir.sub{background:#e9f5d9;font-size:14px;min-height:24px;margin-top:-1px}.ir.sub b{color:#2e8a10}
 .ir.sub.none{background:#f0e8d2}.ir.sub.none b{color:#8a7a5a}
 .insp-btn{position:absolute;right:6px;top:6px;width:36px;height:36px;padding:0;border-radius:50%;border:3px solid #1d0f06;background:linear-gradient(#7fd0ff,#2f8fd6);box-shadow:0 3px 0 #123f66;cursor:pointer;z-index:3}
 .insp-btn svg{width:22px;height:22px}.insp-btn:active{transform:translateY(2px)}
@@ -559,7 +586,7 @@ input{user-select:text;-webkit-user-select:text}
 
   <!-- INVENTORY -->
   <section class="scene" id="s-inv">
-    <div class="i-title dr" style="--d:.05s"><div class="ribbon ol">Inventory</div><button class="btn green" id="i-merge"><span class="t ol">Merge Level</span></button></div>
+    <div class="i-title dr" style="--d:.05s"><div class="ribbon ol">Inventory</div><button class="btn green" id="i-merge"><span class="t ol">Merge Level</span></button><button class="btn pink" id="i-trait"><span class="t ol">Trait</span></button></div>
     <div class="pill dr" style="right:36px;top:8px;--d:.1s;height:32px"><small>XP</small><span class="num ol xpv" style="font-size:18px">0</span></div>
     <div class="panel fl" id="formation" style="--d:.15s"><h3 style="color:#fff">Formation</h3></div>
     <div class="panel up" id="box" style="--d:.25s"><h3 style="color:#fff">Unit Box</h3><div id="grid"></div></div>
@@ -601,6 +628,15 @@ input{user-select:text;-webkit-user-select:text}
     <button class="backbtn pop" id="g-back" style="--d:.5s"><svg viewBox="0 0 40 40"><path d="M16 8L5 18l11 10v-6c9 0 14 3 17 10 0-10-6-17-17-18z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"/></svg></button>
     <div id="g-flash"></div>
     <div class="ov" id="ov-gacha"></div>
+  </section>
+
+  <!-- TRAIT -->
+  <section class="scene" id="s-trait">
+    <div class="i-title dr" style="--d:.05s"><div class="ribbon ol">Trait</div></div>
+    <div class="pill dr" style="right:36px;top:8px;--d:.1s;height:32px"><svg class="ico" viewBox="0 0 24 24"><ellipse cx="12" cy="13" rx="9" ry="8" fill="#ffd36a" stroke="#111" stroke-width="2"/><path d="M7 12q5-5 10 0" fill="none" stroke="#c98a1a" stroke-width="2"/></svg><span class="num ol coinv" style="font-size:18px">0</span></div>
+    <div class="panel up" id="tr-l" style="--d:.15s"><h3 style="color:#fff">Pick a Unit</h3><div id="tr-grid"></div></div>
+    <div class="panel up" id="tr-r" style="--d:.2s"><h3 style="color:#fff">Traits</h3><div id="tr-body" style="display:flex;flex-direction:column;gap:7px;flex:1;min-height:0;padding-top:8px"></div></div>
+    <button class="backbtn pop" id="tr-back" style="--d:.5s"><svg viewBox="0 0 40 40"><path d="M16 8L5 18l11 10v-6c9 0 14 3 17 10 0-10-6-17-17-18z" fill="#fff" stroke="#111" stroke-width="3" stroke-linejoin="round"/></svg></button>
   </section>
 
   <!-- MERGE LEVEL -->
@@ -799,6 +835,8 @@ const UNITS=[
 const U=id=>UNITS.find(u=>u.id===id);
 const UP_BASE=200,UP_MULT=1.25,DMG_MULT=1.1;
 const upCost=(u,l)=>Math.round((u.upBase||UP_BASE)*Math.pow(UP_MULT,l-1));
+const HP_MULT=1.05;
+const hpAt=(u,l)=>Math.round(u.hp*Math.pow(HP_MULT,Math.max(1,l)-1));
 const dmgAt=(u,l)=>Math.round(u.dmg*Math.pow(DMG_MULT,l-1));
 
 /* ---------- state ---------- */
@@ -931,6 +969,7 @@ function show(name){
   if(name==='store') renderStore();
   if(name==='mkt'){renderMkt();if(mkOn())mkCollect().then(mkLoad);}
   if(name==='sell')renderSell();
+  if(name==='trait')renderTrait();
   if(name==='lobby')mkAuto();
   if(name==='insp'){ensureInst(state);renderInsp();ensureIds();}
   refreshXP();
@@ -1048,6 +1087,41 @@ const catOf=u=>u.cat||'B';
 const SERKEY='duck_serial_v1';
 const idStr=n=>{const v=Math.floor(n/100000);let x=v,l='';for(let i=0;i<3;i++){l+=String.fromCharCode(65+x%26);x=Math.floor(x/26);}return String(n%100000).padStart(5,'0')+l;};
 const fullId=(u,n)=>n==null?null:idStr(n)+catOf(u);
+const TRAIT_COST=100;
+const TRAITS={
+  d:{name:'Damage',list:[
+    {id:'heavy',name:'Heavy Blow',w:30,dm:.4,cm:.2,txt:'Damage +40%, attack cooldown 20% slower'},
+    {id:'puncher',name:'Duck Puncher',w:30,dm:.2,txt:'Damage +20%'},
+    {id:'jugg',name:'Juggernaut',w:20,dm:.45,txt:'Damage +45%'},
+    {id:'boss',name:'Boss Mower',w:10,dm:.6,txt:'Damage +60%'}]},
+  s:{name:'Attack Speed',list:[
+    {id:'light',name:'Light Weight Fighter',w:40,cm:-.3,txt:'Attack cooldown 30% faster'},
+    {id:'spam',name:'Spammer Duck',w:35,cm:-.4,txt:'Attack cooldown 40% faster'},
+    {id:'rapid',name:'Rapid Shooter',w:25,cm:-.5,txt:'Attack cooldown 50% faster'}]},
+  r:{name:'Range',list:[
+    {id:'reach',name:'Longer Reach',w:40,rm:.2,txt:'Range +20%'},
+    {id:'wing',name:'Long Wing',w:30,rm:.35,txt:'Range +35%'},
+    {id:'amaze',name:'Amazing Reach',w:20,rm:.5,txt:'Range +50%'},
+    {id:'eagle',name:'Golden Eagle',w:10,rm:.7,txt:'Range +70%'}]}
+};
+const TKEYS=['d','s','r'],TSYM={d:'D',s:'S',r:'R'};
+const traitDef=(k,id)=>TRAITS[k].list.find(t=>t.id===id)||null;
+const cleanTr=t=>{const o={d:null,s:null,r:null};if(t&&typeof t==='object')TKEYS.forEach(k=>{if(traitDef(k,t[k]))o[k]=t[k];});return o;};
+function traitsOf(id,p){const r=(p||state).iu&&(p||state).iu[id];return cleanTr(r&&r.tr);}
+function traitMods(id){
+  const t=traitsOf(id),m={dm:1,cm:1,rm:1};
+  TKEYS.forEach(k=>{const d=traitDef(k,t[k]);if(!d)return;m.dm+=d.dm||0;m.cm*=1+(d.cm||0);m.rm+=d.rm||0;});
+  return m;
+}
+function medalsHtml(id){
+  const t=traitsOf(id);
+  return `<div class="medals">${TKEYS.map(k=>{const d=traitDef(k,t[k]);return `<span class="medal ${k}${d?' on':''}" title="${d?d.name+': '+d.txt:TRAITS[k].name+' trait (empty)'}">${d?TSYM[k]:''}</span>`;}).join('')}</div>`;
+}
+function rollTraitPick(){
+  const k=TKEYS[Math.floor(Math.random()*3)],L=TRAITS[k].list,tot=L.reduce((a,t)=>a+t.w,0);let x=Math.random()*tot,t=L[L.length-1];
+  for(const c of L){if(x<c.w){t=c;break;}x-=c.w;}
+  return {k,t};
+}
 function ensureInst(p){
   if(!p.iu||typeof p.iu!=='object')p.iu={};
   UNITS.forEach(u=>{
@@ -1057,6 +1131,7 @@ function ensureInst(p){
     if(!r){r={sn:null,mg:0,xs:0,cp:[],cl:[]};if(own){const L=(p.lv&&p.lv[u.id])||1;for(let l=1;l<Math.min(L,u.maxLv);l++)r.xs+=upCost(u,l);}p.iu[u.id]=r;}   // old accounts: estimate XP already spent
     if(!Array.isArray(r.cp))r.cp=[];
     if(!Array.isArray(r.cl))r.cl=[];
+    r.tr=cleanTr(r.tr);
     while(r.cp.length<k)r.cp.push(null);r.cp.length=k;
     while(r.cl.length<k)r.cl.push(1);r.cl.length=k;
   });
@@ -1093,7 +1168,7 @@ async function ensureIds(){
 function renderInsp(){
   const u=U(state.sel);if(!u)return;
   ensureInst(state);
-  const L=lvOf(u.id),r=inst(u.id),sp=state.up.speed||0,f=UPS.speed.eff(sp),cd=u.atkCd*f,dmg=dmgAt(u,L),id=fullId(u,r.sn);
+  const L=lvOf(u.id),r=inst(u.id),sp=state.up.speed||0,f=UPS.speed.eff(sp),tm=traitMods(u.id),cd=u.atkCd*f*tm.cm,dmg=Math.round(dmgAt(u,L)*tm.dm),id=fullId(u,r.sn);
   $('#in-art').innerHTML=`<div class="in-nm ol">${u.name}</div><div class="in-lv">Lv. ${lvTxt(u,L)}</div>
     <div class="in-art">${sprIcon(u.spr,190,120)}</div>
     <div class="in-idbox"><small>Unique ID</small><b>${id||'Pending…'}</b></div>`;
@@ -1101,13 +1176,15 @@ function renderInsp(){
   $('#in-p').innerHTML=`
     <div class="ir"><span>Unique ID</span><b>${id||'Pending… (connecting)'}</b></div>
     <div class="ir"><span>Category</span><b>${catOf(u)} · ${CATS[catOf(u)]}</b></div>
-    <div class="ir"><span>Health</span><b>${u.hp}</b></div>
+    <div class="ir"><span>Health</span><b>${hpAt(u,L)}</b></div>
     <div class="ir"><span>Damage per second</span><b>${(dmg/cd).toFixed(1)} <small>(${dmg} dmg / ${cd.toFixed(2)}s)</small></b></div>
     <div class="ir"><span>Attack type</span><b>${u.aoe?'AOE':'Normal'}</b></div>
-    <div class="ir"><span>Attack cooldown</span><b>${cd.toFixed(2)}s${sp>0?` <small>(base ${u.atkCd.toFixed(2)}s)</small>`:''}</b></div>
+    <div class="ir"><span>Range</span><b>${u.rangeTxt}${tm.rm>1?` <small>(trait +${Math.round((tm.rm-1)*100)}%)</small>`:''}</b></div>
+    <div class="ir"><span>Attack cooldown</span><b>${cd.toFixed(2)}s${sp>0?` <small>(base ${u.atkCd.toFixed(2)}s)</small>`:''}${tm.cm!==1?` <small>(trait ${tm.cm<1?'-':'+'}${Math.abs(Math.round((1-tm.cm)*100))}%)</small>`:''}</b></div>
     ${buff}
     <div class="ir"><span>XP used on this unit</span><b>${r.xs} XP</b></div>
-    <div class="ir"><span>Units merged into this</span><b>${r.mg}</b></div>`;
+    <div class="ir"><span>Units merged into this</span><b>${r.mg}</b></div>
+    <div class="ir"><span>Traits</span><b style="font-size:15px;line-height:1.1;text-align:right">${TKEYS.map(k=>{const d=traitDef(k,traitsOf(u.id)[k]);return d?d.name:'—';}).join(' · ')}</b></div>`;
 }
 function renderDetail(){
   const u=U(state.sel),d=$('#detail');
@@ -1116,9 +1193,9 @@ function renderDetail(){
   d.classList.toggle('maxed',max);
   d.innerHTML=`
     <div class="d-head"><span class="nm ol">${u.name}</span><span class="lvl">Lv. ${lvTxt(u,L)}${L>u.maxLv?' (MAX)':' / '+u.maxLv}</span></div>
-    <div class="d-art"><button class="insp-btn" id="d-insp" title="Advanced Inspect"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="#fff" fill-opacity=".35" stroke="#fff" stroke-width="2.6"/><path d="M15 15l6 6" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg></button><div class="big">${sprIcon(u.spr,150,86)}</div></div>
+    <div class="d-art">${medalsHtml(u.id)}<button class="insp-btn" id="d-insp" title="Advanced Inspect"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="#fff" fill-opacity=".35" stroke="#fff" stroke-width="2.6"/><path d="M15 15l6 6" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg></button><div class="big">${sprIcon(u.spr,150,86)}</div></div>
     <div class="stats">
-      <div><span>HP</span><b>${u.hp}</b></div>
+      <div><span>HP</span><b>${hpAt(u,L)}${max?'':` <i>▸ ${hpAt(u,L+1)}</i>`}</b></div>
       <div><span>Attack Power</span><b>${dmgAt(u,L)}${max?'':` <i>▸ ${dmgAt(u,L+1)}</i>`}</b></div>
       <div><span>Attack Cooldown</span><b>${u.atkCd.toFixed(1)}s</b></div>
       <div><span>Range</span><b>${u.rangeTxt}</b></div>
@@ -1339,9 +1416,10 @@ function spawnUnit(side,u,lv){
   const b=B.bases[side];
   B.units.push({
     side,def:u,lv,hw:u.hw||HW,x:b.x+(side?-58:58)+(Math.random()*6-3),y:GROUND-6+Math.random()*16,
-    hp:u.hp,max:u.hp,dmg:dmgAt(u,lv),state:'walk',t:0,cd:0,hit:false,tgt:null,
+    hp:u.hp,max:u.hp,dmg:dmgAt(u,lv),tcd:1,rg:u.range,state:'walk',t:0,cd:0,hit:false,tgt:null,
     tilt:0,alpha:1,anim:Math.random()*.6,moving:false
   });
+  if(side===0){const m=traitMods(u.id),o=B.units[B.units.length-1];o.hp=o.max=hpAt(u,lv);o.dmg=Math.round(o.dmg*m.dm);o.tcd=m.cm;o.rg=u.range*m.rm;}
 }
 function bindInput(){
   let drag=null;
@@ -1366,7 +1444,7 @@ function setPause(p){B.paused=p;$('#ov-pause').classList.toggle('show',p);}
 
 /* ---- combat ---- */
 function findTarget(u){
-  const dir=u.side?-1:1,range=u.def.range;
+  const dir=u.side?-1:1,range=u.rg||u.def.range;
   let best=null,bg=1e9;
   for(const e of B.units){
     if(e.side===u.side||e.state==='dead') continue;
@@ -1380,7 +1458,7 @@ function findTarget(u){
   return null;
 }
 function aoeTargets(u){
-  const dir=u.side?-1:1,range=u.def.range,out=[];
+  const dir=u.side?-1:1,range=u.rg||u.def.range,out=[];
   for(const e of B.units){
     if(e.side===u.side||e.state==='dead') continue;
     const d=(e.x-u.x)*dir; if(d<-10) continue;
@@ -1430,7 +1508,7 @@ function updUnit(u,dt){
   if(u.state==='cool'){u.moving=false;if(u.cd>0)return;u.state='walk';}
   if(tg){
     u.moving=false;
-    if(u.cd<=0){u.state='atk';u.t=0;u.hit=false;u.cd=def.atkCd*(u.side===0?B.atkF:1);u.tgt=tg;}
+    if(u.cd<=0){u.state='atk';u.t=0;u.hit=false;u.cd=def.atkCd*(u.side===0?B.atkF:1)*(u.tcd||1);u.tgt=tg;}
     return;
   }
   u.moving=true;u.x+=dir*def.speed*dt;u.anim+=dt;
@@ -1805,6 +1883,8 @@ $('#l-play').onclick=e=>press(e.currentTarget,el=>goto('chap',el));
 $('#l-gacha').onclick=e=>press(e.currentTarget,el=>goto('gacha',el));
 $('#g-back').onclick=e=>{if(hatching)return;press(e.currentTarget,el=>goto('lobby',el));};
 $('#i-merge').onclick=e=>press(e.currentTarget,el=>{mg.id=state.sel;mg.sel.clear();goto('merge',el);});
+$('#i-trait').onclick=e=>press(e.currentTarget,el=>{TR.id=state.sel;goto('trait',el);});
+$('#tr-back').onclick=e=>{if(TR.rolling)return;press(e.currentTarget,el=>goto('inv',el));};
 $('#i-store').onclick=e=>press(e.currentTarget,el=>goto('store',el));
 $('#m-back').onclick=e=>press(e.currentTarget,el=>goto('inv',el));
 $('#in-back').onclick=e=>press(e.currentTarget,el=>goto('inv',el));
@@ -2108,6 +2188,37 @@ function _oldRenderStore(){
 }
 
 
+
+/* ---------- trait roll ---------- */
+const TR={id:null,rolling:false};
+function renderTrait(){
+  const OW=UNITS.filter(u=>state.owned.includes(u.id));
+  if(!OW.some(u=>u.id===TR.id))TR.id=OW.some(u=>u.id===state.sel)?state.sel:OW[0].id;
+  const g=$('#tr-grid');g.innerHTML='';
+  OW.forEach(u=>{const w=document.createElement('div');w.innerHTML=card(u,u.id===TR.id,false);const c=w.firstElementChild;
+    c.onclick=()=>{if(busy||TR.rolling)return;blip();TR.id=u.id;renderTrait();};g.appendChild(c);});
+  const u=U(TR.id),t=traitsOf(u.id),can=state.admin||(state.coins||0)>=TRAIT_COST;
+  $('#tr-body').innerHTML=`<div class="tr-head"><div class="a">${sprIcon(u.spr,86,64)}</div><div><b>${u.name}</b><small>Lv. ${lvTxt(u,lvOf(u.id))}</small></div></div>`+
+    TKEYS.map(k=>{const d=traitDef(k,t[k]);return `<div class="tr-row${d?'':' empty'}" data-k="${k}"><span class="medal ${k}${d?' on':''}">${d?TSYM[k]:''}</span><div><span class="lab">${TRAITS[k].name} trait</span><b>${d?d.name:'Empty'}</b>${d?`<span class="ef">${d.txt}</span>`:''}</div></div>`;}).join('')+
+    `<button class="btn ${can?'green':'dim'}" id="tr-roll"><span class="t ol">Roll Trait · ${TRAIT_COST} Coins</span></button>`;
+  $('#tr-roll').onclick=rollTrait;
+}
+async function rollTrait(){
+  if(busy||TR.rolling)return;
+  if(!state.admin&&(state.coins||0)<TRAIT_COST){locked($('#tr-roll'),'Not enough coins');return;}
+  const u=U(TR.id);TR.rolling=true;
+  if(!state.admin)state.coins-=TRAIT_COST;
+  const res=rollTraitPick(),btn=$('#tr-roll');
+  btn.classList.add('dim');
+  for(let i=0;i<8;i++){const f=rollTraitPick();btn.querySelector('.t').textContent=f.t.name;blip();await new Promise(r=>setTimeout(r,70+i*18));}
+  const r=inst(u.id);r.tr=cleanTr(r.tr);
+  const old=traitDef(res.k,r.tr[res.k]);r.tr[res.k]=res.t.id;
+  save();quack();refreshXP();
+  toast(`${res.t.name}!`+(old&&old.id!==res.t.id?` (replaced ${old.name})`:old?' (same trait)':''));
+  TR.rolling=false;renderTrait();
+  const row=document.querySelector(`#tr-body .tr-row[data-k="${res.k}"]`);if(row)row.classList.add('flash');
+}
+
 /* ---------- marketplace (online) ---------- */
 const MK={tab:'sale',list:null,busy:false,lastAuto:0};
 const mkOn=()=>typeof CL!=='undefined'&&CL.on&&CL.auth&&CL.auth.currentUser;
@@ -2255,7 +2366,7 @@ function sanitizeProfile(o){
   p.sel=p.owned.includes(o.sel)?o.sel:'duck';
   p.iu={};
   if(o.iu&&typeof o.iu==='object')ids.forEach(id=>{const r=o.iu[id];if(!r||typeof r!=='object')return;const n2=v=>Number.isInteger(v)&&v>=0&&v<1e9?v:null;
-    p.iu[id]={sn:n2(r.sn),mg:clamp(r.mg,0,9999),xs:clamp(r.xs,0,1e9),cp:(Array.isArray(r.cp)?r.cp:[]).slice(0,9999).map(n2),cl:(Array.isArray(r.cl)?r.cl:[]).slice(0,9999).map(v=>Number.isInteger(v)&&v>=1&&v<1e6?v:1)};});
+    p.iu[id]={sn:n2(r.sn),mg:clamp(r.mg,0,9999),xs:clamp(r.xs,0,1e9),cp:(Array.isArray(r.cp)?r.cp:[]).slice(0,9999).map(n2),cl:(Array.isArray(r.cl)?r.cl:[]).slice(0,9999).map(v=>Number.isInteger(v)&&v>=1&&v<1e6?v:1),tr:cleanTr(r.tr)};});
   p.dex={};if(o.dex&&typeof o.dex==='object')Object.keys(o.dex).forEach(k=>{if(ENEMY_DEX.includes(k)&&STAGES.some(t=>t.id===o.dex[k]))p.dex[k]=o.dex[k];});
   dexFill(p);ensureInst(p);
   return p;
